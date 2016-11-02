@@ -19,11 +19,11 @@ describe "Search" do
       expect(page).to have_selector('.store', count: 15)
       #And I should see the long name, city, distance, phone number and store type for each of the 15 results
       within(first('.store')) do
-        expect(page).to have_content('Name:')
-        expect(page).to have_content('City:')
-        expect(page).to have_content('Distance:')
-        expect(page).to have_content('Phone Number:')
-        expect(page).to have_content('Type:')
+        expect(page).to have_content('Name: Cherry Creek Shopping Center')
+        expect(page).to have_content('City: Denver')
+        expect(page).to have_content('Distance: 3.25')
+        expect(page).to have_content('Phone Number: 303-270-9189')
+        expect(page).to have_content('Type: Mobile')
       end
     end
   end
