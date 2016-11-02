@@ -30,6 +30,7 @@ GEM
     addressable (2.4.0)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
+    byebug (9.0.6)
     capybara (2.10.1)
       addressable
       mime-types (>= 1.16)
@@ -182,6 +183,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   coffee-rails (~> 4.0.0)
   factory_girl_rails
   faker
