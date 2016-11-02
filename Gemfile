@@ -21,4 +21,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem "minitest-rails-capybara"
   gem "pry", :require => "pry"
+  gem 'factory_girl_rails'
 end
