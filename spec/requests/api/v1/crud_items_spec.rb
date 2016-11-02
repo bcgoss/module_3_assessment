@@ -53,10 +53,18 @@ describe "Items API Controller" do
     #I receive a 201 JSON response if the record is successfully created 
     expect(response.status).to eq(201)
     #And I receive a JSON response containing the id, name, description, and image_url but not the created_at or updated_at
-    item = json.parse(response.body, symbolize_names: true)
-    expect(item[:id]).to exist
-    expect(item[:name]).to eq('Name')
+    item = JSON.parse(response.body, symbolize_names: true)
+    expect(item[:id]).to_not be_nil
+    expect(item[:name]).to eq('Item_name')
     expect(item[:description]).to eq('Description')
     expect(item[:image_url]).to eq('Image_Url')
+  end
+
+  it 'can update an existing item' do
+    #When I send a DELETE request to /api/v1/items/1
+    item = create :item
+    delete "api/v1/items/#{item.id}"
+    #I receieve a 204 JSON response if the record was deleted
+    expect(Item.find_by(id: item.id)).to be_nil
   end
 end
