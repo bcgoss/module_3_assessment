@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe "Items API Controller" do
   it 'can display all items' do
-    pending 'Need serializer to return everything except time stamps'
     #When I send a GET request to /api/v1/items 
     item = create :item, name: 'Name', description: 'Description', image_url: 'Image_Url'
     get 'api/v1/items'
@@ -26,7 +25,6 @@ describe "Items API Controller" do
 
   
   it 'can display an item' do
-    pending 'Need serializer to return everything except time stamps'
     #When I send a GET request to /api/v1/items 
     item = create :item, name: 'Name', description: 'Description', image_url: 'Image_Url'
     get "api/v1/items/#{item.id}"
@@ -44,6 +42,7 @@ describe "Items API Controller" do
     expect(raw_item[:image_url]).to eq('Image_Url')
     #but not the created_at or updated_at
     expect(raw_item[:created_at]).to be_nil
+    expect(raw_item[:updated_at]).to be_nil
   end
 
   it 'can create a new item' do
@@ -58,6 +57,8 @@ describe "Items API Controller" do
     expect(item[:name]).to eq('Item_name')
     expect(item[:description]).to eq('Description')
     expect(item[:image_url]).to eq('Image_Url')
+    expect(item[:created_at]).to be_nil
+    expect(item[:updated_at]).to be_nil
   end
 
   it 'can update an existing item' do
