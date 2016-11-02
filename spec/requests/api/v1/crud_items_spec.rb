@@ -65,6 +65,7 @@ describe "Items API Controller" do
     item = create :item
     delete "api/v1/items/#{item.id}"
     #I receieve a 204 JSON response if the record was deleted
+    expect(response.status).to eq(204)
     expect(Item.find_by(id: item.id)).to be_nil
   end
 end
