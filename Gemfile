@@ -20,6 +20,8 @@ group :development do
 end
 
 group :development, :test do
+  gem 'vcr'
+  gem 'webmock'
   gem 'byebug'
   gem 'rspec-rails'
   gem "minitest-rails-capybara"
