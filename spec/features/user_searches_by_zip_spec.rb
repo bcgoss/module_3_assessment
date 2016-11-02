@@ -6,7 +6,7 @@ describe "Search" do
     #When I visit "/"
     visit '/'
     #And I fill in a search box with "80202" and click "search"
-    fill_in ,with '80202'
+    fill_in 'postal_code' ,with: '80202'
     click_on 'Search'
     #Then my current path should be "/search" (ignoring params)
     expect(current_path).to eq('/search')
@@ -18,7 +18,11 @@ describe "Search" do
     expect(page).to have_selector('.store', count: 15)
     #And I should see the long name, city, distance, phone number and store type for each of the 15 results
     within('.store') do
-      
+      expect(page).to have_content('Name:')
+      expect(page).to have_content('City:')
+      expect(page).to have_content('Distance:')
+      expect(page).to have_content('Phone Number:')
+      expect(page).to have_content('Type:')
     end
   end
 end
