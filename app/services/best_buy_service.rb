@@ -8,7 +8,7 @@ class BestBuyService
   end
 
   def conn 
-    Faraday.new(url: 'https://api.bestbuy.com/v1') do |faraday|
+    Faraday.new(url: 'https://api.bestbuy.com/v1/') do |faraday|
       faraday.request :url_encoded
       faraday.adapter Faraday.default_adapter
       faraday.params[:apiKey] = ENV['BESTBUY_API_KEY']
@@ -18,12 +18,11 @@ class BestBuyService
   end
 
   def stores_by_postal_code
-    parse "/stores(area(#{@postal_code},25))"
+    parse "stores(area(#{@postal_code},25))"
   end
 
-  def parse(url)
-byebug
-    JSON.parse(response(url).body, symbolize_names: true)
+  def parse(path)
+    JSON.parse(response(path).body, symbolize_names: true)
   end
 
   def response(target)
